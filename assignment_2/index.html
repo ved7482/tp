@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Assignment 3: Deployment of Web Server</title>
+    <style>
+      :root {
+        --gh-dark-bg: #0d1117;
+        --gh-dark-text: #c9d1d9;
+        --gh-dark-link: #58a6ff;
+        --gh-dark-border: #30363d;
+        --gh-dark-header: #ffffff;
+        --gh-dark-code-bg: #161b22;
+        --accent-blue: #58a6ff;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica,
+          Arial, sans-serif;
+        line-height: 1.6;
+        color: var(--gh-dark-text);
+        background-color: var(--gh-dark-bg);
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+      }
+
+      h1,
+      h2 {
+        color: var(--gh-dark-header);
+        border-bottom: 1px solid var(--gh-dark-border);
+        padding-bottom: 0.3em;
+        margin-top: 1.5em;
+        text-align: center;
+      }
+
+      h3,
+      h4 {
+        color: var(--gh-dark-header);
+        padding-bottom: 0.3em;
+        margin-top: 1.5em;
+      }
+
+      h3::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 3px;
+        background-color: var(--accent-blue);
+        border-radius: 3px;
+      }
+
+      h1 {
+        font-size: 2em;
+      }
+
+      h2 {
+        font-size: 1.5em;
+      }
+
+      h3 {
+        font-size: 1.25em;
+      }
+
+      img {
+        max-width: 100%;
+        height: auto;
+        border: 1px solid var(--gh-dark-border);
+        border-radius: 6px;
+        margin: 1em 0;
+      }
+
+      code {
+        font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo,
+          Courier, monospace;
+        background-color: var(--gh-dark-code-bg);
+        padding: 0.2em 0.4em;
+        border-radius: 3px;
+        font-size: 85%;
+      }
+
+      pre {
+        background-color: var(--gh-dark-code-bg);
+        padding: 1em;
+        border-radius: 6px;
+        overflow-x: auto;
+      }
+
+      pre code {
+        background-color: transparent;
+        padding: 0;
+      }
+
+      ul {
+        padding-left: 2em;
+        list-style: none;
+      }
+
+      ul li {
+        margin: 0.5em 0;
+        position: relative;
+      }
+
+      ul li::before {
+        content: "•";
+        color: var(--accent-blue);
+        font-weight: bold;
+        position: absolute;
+        left: -1.5em;
+      }
+
+      strong {
+        color: var(--gh-dark-header);
+      }
+
+      .student-info {
+        background-color: var(--gh-dark-code-bg);
+        padding: 1.5em;
+        border-radius: 6px;
+        margin: 1em 0;
+      }
+
+      .step {
+        margin: 2em 0;
+      }
+
+      .step > h3 {
+        position: relative;
+        padding-left: 1em;
+      }
+
+      .step:not([data-step="2"]):not([data-step="5"]) > h3::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 3px;
+        background-color: var(--accent-blue);
+        border-radius: 3px;
+      }
+
+      .step[data-step="2"] h4,
+      .step[data-step="5"] h4 {
+        position: relative;
+        padding-left: 2em;
+      }
+
+      .step[data-step="2"] h4::before,
+      .step[data-step="5"] h4::before {
+        content: "→";
+        color: var(--accent-blue);
+        position: absolute;
+        left: 0.5em;
+        top: 35%;
+        transform: translateY(-50%);
+        font-size: 1.2em;
+      }
+
+      .step img {
+        display: block;
+        margin: 1em 0;
+      }
+
+      .command {
+        background-color: var(--gh-dark-code-bg);
+        padding: 1em;
+        border-radius: 6px;
+        margin: 1em 0;
+        font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo,
+          Courier, monospace;
+      }
+
+      .conclusion {
+        text-align: center;
+        margin: 2em 0;
+        padding: 1em;
+        background-color: var(--gh-dark-code-bg);
+        border-radius: 6px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Assignment 3: Deployment of Web Server</h1>
+
+    <div class="student-info">
+      <h2>Student Information</h2>
+      <ul>
+        <li><strong>Name:</strong> Divyanshu T. Nishade</li>
+        <li><strong>Division:</strong> ET1</li>
+        <li><strong>Roll No:</strong> ET1-03</li>
+        <li><strong>PRN:</strong> 2024010170026</li>
+      </ul>
+    </div>
+
+    <h2>AWS EC2 Deployment Process</h2>
+
+    <div class="step" data-step="1">
+      <h3>Step 1: Searching for the EC2 Service</h3>
+      <img src="img/ec2.png" alt="EC2 Service Search" />
+      <p>
+        Navigate to the AWS Management Console and search for "EC2" in the
+        search bar at the top.
+      </p>
+    </div>
+
+    <div class="step" data-step="2">
+      <h3>Step 2: Launch an Instance</h3>
+      <p>
+        Click on the "Launch Instance" button to begin the EC2 instance setup
+        process.
+      </p>
+
+      <h4>Name and Tags</h4>
+      <img src="img/name_and_tag.png" alt="Name and Tags" />
+      <p>
+        Enter a name for your instance to easily identify it in the AWS Console.
+      </p>
+
+      <h4>Selecting Amazon Machine Image (AMI)</h4>
+      <img src="img/ami.png" alt="Select AMI" />
+      <p>
+        Choose Amazon Linux 2 AMI as the operating system for your web server.
+      </p>
+
+      <h4>Instance Type</h4>
+      <img src="img/instance_type.png" alt="Instance Type" />
+      <p>Select t2.micro which is eligible for the free tier.</p>
+
+      <h4>Key Pair (Login)</h4>
+      <img src="img/key_pair.png" alt="Key Pair" />
+      <p>
+        Create a new key pair or select an existing one. This will be used to
+        securely connect to your instance.
+      </p>
+
+      <h4>Firewall (Security Group)</h4>
+      <img src="img/firewall.png" alt="Security Group" />
+      <p>
+        Create a new security group allowing HTTP (port 80) and SSH (port 22)
+        traffic.
+      </p>
+
+      <h4>Configure Storage</h4>
+      <img src="img/config_storage.png" alt="Configure Storage" />
+      <p>Use the default storage configuration (8 GB gp2 SSD).</p>
+
+      <h4>Launch Instance</h4>
+      <img src="img/preview_launch_instance.png" alt="Launch Instance" />
+      <p>
+        Review your instance configuration and click "Launch Instance" to create
+        it.
+      </p>
+    </div>
+
+    <div class="step" data-step="3">
+      <h3>Step 3: Instance Launched Successfully</h3>
+      <img src="img/review_configuration.png" alt="Instance Launched" />
+      <p>Verify that your instance is running in the EC2 dashboard.</p>
+    </div>
+
+    <div class="step" data-step="4">
+      <h3>Step 4: Connect to the Instance</h3>
+      <img src="img/connect_instance.png" alt="Connect to Instance" />
+      <p>
+        Select your instance and click "Connect" to access the connection
+        options.
+      </p>
+    </div>
+
+    <div class="step" data-step="5">
+      <h3>Step 5: Install and Configure Web Server</h3>
+      <p>
+        Once connected to your instance via SSH, execute the following commands:
+      </p>
+
+      <h4>Update System Packages</h4>
+      <img src="img/first_cmd.png" alt="Update System" />
+      <div class="command">sudo yum update</div>
+
+      <h4>Install Apache Web Server</h4>
+      <img src="img/second_cmd.png" alt="Install Apache" />
+      <div class="command">sudo yum install httpd.x86_64</div>
+
+      <h4>Start Apache Service & Enable Apache to Start on Boot</h4>
+      <img src="img/third_and_fourth_cmd.png" alt="Start Apache" />
+      <div class="command">sudo systemctl start httpd.service</div>
+      <div class="command">sudo systemctl enable httpd.service</div>
+    </div>
+
+    <div class="step" data-step="6">
+      <h3>Step 6: Verify Web Server is Running</h3>
+      <div class="command">sudo systemctl status httpd.service</div>
+    </div>
+
+    <div class="step" data-step="7">
+      <h3>Step 7: Access Web Server Through Browser</h3>
+      <img src="img/instance_summary.png" alt="Copy IP Address" />
+      <p>
+        Copy the public IP address of your EC2 instance from the instance
+        details page.
+      </p>
+    </div>
+
+    <div class="step" data-step="8">
+      <h3>Step 8: Web Server Successfully Deployed</h3>
+      <img src="img/web_hosting.png" alt="Web Server Running" />
+      <p>
+        Paste the IP address in a web browser to see the default Apache web
+        page, confirming that your web server is successfully deployed.
+      </p>
+    </div>
+
+    <div class="conclusion">
+      <h2>Conclusion</h2>
+      <p>
+        You have successfully deployed a web server on AWS EC2 using Apache. The
+        server is now accessible via its public IP address and will
+        automatically start when the instance boots up.
+      </p>
+    </div>
+  </body>
+</html>
