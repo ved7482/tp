@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Assignment 3: Creation of Bucket</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Roboto:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Roboto", sans-serif;
+        line-height: 1.6;
+        color: #c9d1d9;
+        background-color: #0d1117;
+        padding: 20px;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      .main-heading {
+        font-family: "Poppins", sans-serif;
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #c9d1d9;
+        text-align: center;
+        margin-bottom: 2rem;
+        padding: 1rem;
+        background: linear-gradient(135deg, #58a6ff, #238636);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      }
+
+      .section {
+        background-color: #161b22;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        padding: 25px;
+        margin-bottom: 30px;
+        border: 1px solid #30363d;
+      }
+
+      .section-heading {
+        font-family: "Poppins", sans-serif;
+        font-size: 1.8rem;
+        color: #c9d1d9;
+        margin-bottom: 1rem;
+        border-bottom: 2px solid #238636;
+        padding-bottom: 0.5rem;
+      }
+
+      .sub-heading {
+        font-family: "Poppins", sans-serif;
+        font-size: 1.4rem;
+        color: #58a6ff;
+        margin: 1.5rem 0 1rem;
+      }
+
+      .student-info {
+        background-color: #21262d;
+        padding: 20px;
+        border-radius: 8px;
+        margin-bottom: 2rem;
+        border: 1px solid #30363d;
+      }
+
+      .student-info p {
+        margin: 5px 0;
+        font-weight: 500;
+        color: #c9d1d9;
+      }
+
+      ol,
+      ul {
+        padding-left: 2rem;
+        margin: 1rem 0;
+        color: #c9d1d9;
+      }
+
+      li {
+        margin-bottom: 1rem;
+      }
+
+      .img-container {
+        text-align: center;
+        margin: 1.5rem 0;
+        max-width: 100%;
+        overflow: hidden;
+      }
+
+      .img-container img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        border: 1px solid #30363d;
+        display: block;
+        margin: 0 auto;
+      }
+
+      /* New styles for inline images */
+      li img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        border: 1px solid #30363d;
+        margin: 1rem 0;
+        display: block;
+      }
+
+      .resources {
+        background-color: #21262d;
+        padding: 20px;
+        border-radius: 8px;
+        margin-top: 2rem;
+        border: 1px solid #30363d;
+      }
+
+      .resources h2 {
+        color: #c9d1d9;
+        margin-bottom: 1rem;
+      }
+
+      .resources ul {
+        list-style-type: none;
+      }
+
+      .resources li {
+        margin-bottom: 0.8rem;
+      }
+
+      .resources a {
+        color: #58a6ff;
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+
+      .resources a:hover {
+        color: #79b8ff;
+        text-decoration: underline;
+      }
+
+      /* Add responsive image container */
+      .responsive-img {
+        max-width: 100%;
+        height: auto;
+        margin: 1rem 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="main-heading">Assignment 3: Creation of Bucket</h1>
+
+      <div class="section">
+        <div class="student-info">
+          <h2 class="section-heading">Student Information</h2>
+          <p><strong>Name:</strong> Divyanshu T. Nikhade</p>
+          <p><strong>Division:</strong> ET1</p>
+          <p><strong>Roll No:</strong> ET1-03</p>
+          <p><strong>PRN:</strong> 2024010170026</p>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2 class="section-heading">
+          Steps for Creating a Bucket on AWS Using S3 Service
+        </h2>
+
+        <h3 class="sub-heading">1. Searching for S3 Service</h3>
+        <ol>
+          <li>Log in to your AWS Management Console.</li>
+          <li>
+            In the search bar at the top, type "S3" and select "S3" from the
+            dropdown menu.
+          </li>
+        </ol>
+        <div class="img-container">
+          <img src="img/s3.png" alt="AWS Console Search for S3" />
+        </div>
+
+        <h3 class="sub-heading">2. Creating a New Bucket</h3>
+        <ol>
+          <li>From the S3 dashboard, click on the "Create bucket" button.</li>
+        </ol>
+        <div class="img-container">
+          <img
+            src="img/amazon_s3.png"
+            alt="S3 Dashboard with Create bucket button"
+          />
+        </div>
+
+        <h3 class="sub-heading">3. Configuring Your Bucket</h3>
+        <ol>
+          <li>
+            Enter a unique bucket name in the "Bucket name" field.
+            <ul>
+              <li>
+                Remember that bucket names must be globally unique across all of
+                AWS
+              </li>
+              <li>Use only lowercase letters, numbers, dots, and hyphens</li>
+              <li>Names must be 3-63 characters long</li>
+            </ul>
+            <div class="img-container">
+              <img src="img/buckeet_name.png" alt="Bucket name configuration" />
+            </div>
+          </li>
+          <li>Select your preferred AWS Region from the dropdown menu.</li>
+          <li>
+            Configure any additional settings as needed:
+            <ul>
+              <li>Object Ownership</li>
+              <li>Block Public Access settings</li>
+              <li>Bucket Versioning</li>
+              <li>Tags</li>
+              <li>Default encryption</li>
+            </ul>
+          </li>
+          <li>Click the "Create bucket" button at the bottom of the page.</li>
+        </ol>
+        <div class="img-container">
+          <img
+            src="img/create_bucket.png"
+            alt="Bucket creation configuration page"
+          />
+        </div>
+
+        <h3 class="sub-heading">4. Successful Bucket Creation</h3>
+        <p>
+          After clicking "Create bucket," a success message will appear
+          confirming your bucket has been created successfully.
+        </p>
+        <div class="img-container">
+          <img
+            src="img/buucket_created.png"
+            alt="Bucket created successfully message"
+          />
+        </div>
+
+        <h3 class="sub-heading">5. Adding Objects to Your Bucket</h3>
+        <ol>
+          <li>Select your newly created bucket from the list.</li>
+          <li>Click the "Upload" button.</li>
+          <div class="img-container">
+            <img
+              src="img/upload_object_screen.png"
+              alt="Upload object screen"
+            />
+          </div>
+          <li>
+            In the upload window, click "Add files" or "Add folder" to select
+            files from your computer.
+          </li>
+          <li>
+            Configure any properties, permissions, or additional settings if
+            needed.
+          </li>
+          <li>Click "Upload" to start the file upload process.</li>
+        </ol>
+        <div class="img-container">
+          <img src="img/upload_file.png" alt="File upload interface" />
+        </div>
+
+        <h3 class="sub-heading">6. Upload Confirmation</h3>
+        <p>
+          Once the upload completes, an "Upload status" window will appear
+          showing "Uploaded successfully" for your objects.
+        </p>
+        <div class="img-container">
+          <img
+            src="img/object_uploaded.png"
+            alt="Upload successful status message"
+          />
+        </div>
+
+        <h3 class="sub-heading">7. Accessing Your Bucket Contents</h3>
+        <ol>
+          <li>
+            Click on your bucket name from the S3 dashboard to view its
+            contents.
+          </li>
+          <li>You will see a list of all objects stored in your bucket.</li>
+        </ol>
+        <div class="img-container">
+          <img
+            src="img/bucket_content.png"
+            alt="Bucket contents showing uploaded objects"
+          />
+        </div>
+
+        <h3 class="sub-heading">8. Deleting Objects in Your Bucket</h3>
+        <ol>
+          <li>
+            Navigate to your bucket and select the object(s) you want to delete
+            by checking the box next to each item.
+          </li>
+          <li>Click the "Delete" button in the top menu.</li>
+          <div class="img-container">
+            <img src="img/select_obj.png" alt="Select objects for deletion" />
+          </div>
+          <li>
+            A confirmation dialog will appear. Type "permanently delete" in the
+            confirmation field if requested.
+          </li>
+          <li>Click "Delete objects" to confirm.</li>
+          <div class="img-container">
+            <img
+              src="img/permanetly_delete_obj.png"
+              alt="Permanently delete confirmation"
+            />
+          </div>
+          <li>After successful deletion, you'll see a success message.</li>
+        </ol>
+        <div class="img-container">
+          <img
+            src="img/obj_deletedd.png"
+            alt="Objects deleted successfully message"
+          />
+        </div>
+
+        <h3 class="sub-heading">9. Deleting Your Bucket</h3>
+        <ol>
+          <li>
+            Return to the S3 dashboard by clicking "Buckets" in the navigation.
+          </li>
+          <li>
+            Select the bucket you want to delete by checking the box next to its
+            name.
+          </li>
+          <li>Click the "Delete" button.</li>
+          <li>
+            A confirmation dialog will appear. Type the bucket name in the
+            confirmation field.
+          </li>
+          <li>Click "Delete bucket" to confirm.</li>
+          <div class="img-container">
+            <img
+              src="img/delete_bucket_confirmation.png"
+              alt="Delete bucket confirmation"
+            />
+          </div>
+          <li>
+            After successful deletion, the bucket will be removed from your
+            bucket list.
+          </li>
+        </ol>
+        <div class="img-container">
+          <img src="img/bucket_deleted.png" alt="Bucket deleted successfully" />
+        </div>
+
+        <div class="resources">
+          <h2>Additional Resources</h2>
+          <ul>
+            <li>
+              <a href="https://docs.aws.amazon.com/s3/">AWS S3 Documentation</a>
+            </li>
+            <li>
+              <a
+                href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html"
+                >S3 Bucket Naming Rules</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/security-best-practices.html"
+                >S3 Best Practices</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
