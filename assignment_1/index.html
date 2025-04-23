@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Assignment #1: Creating an Instance in AWS</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&family=Roboto:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Roboto", sans-serif;
+        line-height: 1.6;
+        color: #c9d1d9;
+        background-color: #0d1117;
+        padding: 20px;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .container {
+        max-width: 1200px;
+        width: 100%;
+        padding: 20px;
+      }
+
+      .main-heading {
+        font-family: "Poppins", sans-serif;
+        font-size: 3rem;
+        font-weight: 800;
+        text-align: center;
+        margin-bottom: 3rem;
+        padding: 1.5rem;
+        background: linear-gradient(135deg, #58a6ff, #238636);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        letter-spacing: 1px;
+        position: relative;
+      }
+
+      .main-heading::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 200px;
+        height: 4px;
+        background: linear-gradient(90deg, #58a6ff, #238636);
+        border-radius: 2px;
+      }
+
+      .section {
+        background-color: #161b22;
+        border-radius: 15px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        padding: 30px;
+        margin-bottom: 40px;
+        border: 1px solid #30363d;
+        transition: transform 0.3s ease;
+      }
+
+      .section:hover {
+        transform: translateY(-5px);
+      }
+
+      .section-heading {
+        font-family: "Poppins", sans-serif;
+        font-size: 2rem;
+        font-weight: 700;
+        color: #58a6ff;
+        margin-bottom: 1.5rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid #238636;
+      }
+
+      .sub-heading {
+        font-family: "Poppins", sans-serif;
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: #79b8ff;
+        margin: 2rem 0 1rem;
+        padding-left: 1rem;
+        border-left: 4px solid #238636;
+      }
+
+      .step {
+        background-color: #21262d;
+        border-radius: 10px;
+        padding: 20px;
+        margin-bottom: 1.5rem;
+        border: 1px solid #30363d;
+      }
+
+      .step-number {
+        font-family: "Poppins", sans-serif;
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: #58a6ff;
+        margin-bottom: 0.5rem;
+      }
+
+      ol,
+      ul {
+        padding-left: 2rem;
+        margin: 1rem 0;
+        color: #c9d1d9;
+      }
+
+      li {
+        margin-bottom: 0.8rem;
+        position: relative;
+      }
+
+      li::before {
+        content: "•";
+        color: #58a6ff;
+        font-weight: bold;
+        position: absolute;
+        left: -1rem;
+      }
+
+      .img-container {
+        text-align: center;
+        margin: 2rem 0;
+        max-width: 100%;
+        overflow: hidden;
+        background-color: #21262d;
+        padding: 15px;
+        border-radius: 10px;
+        border: 1px solid #30363d;
+      }
+
+      .img-container img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        border: 1px solid #30363d;
+        display: block;
+        margin: 0 auto;
+        transition: transform 0.3s ease;
+      }
+
+      .img-container img:hover {
+        transform: scale(1.02);
+      }
+
+      .img-caption {
+        color: #8b949e;
+        font-size: 0.9rem;
+        margin-top: 0.8rem;
+        font-style: italic;
+        text-align: center;
+      }
+
+      /* Add responsive styles for images */
+      @media (max-width: 768px) {
+        .img-container {
+          padding: 10px;
+        }
+
+        .img-caption {
+          font-size: 0.8rem;
+        }
+      }
+
+      .note {
+        background-color: #21262d;
+        border-left: 4px solid #238636;
+        padding: 1rem;
+        margin: 1rem 0;
+        font-style: italic;
+      }
+
+      .resources {
+        background-color: #21262d;
+        padding: 25px;
+        border-radius: 10px;
+        margin-top: 2rem;
+        border: 1px solid #30363d;
+      }
+
+      .resources h2 {
+        color: #58a6ff;
+        margin-bottom: 1rem;
+        font-family: "Poppins", sans-serif;
+      }
+
+      .resources ul {
+        list-style-type: none;
+      }
+
+      .resources li {
+        margin-bottom: 0.8rem;
+      }
+
+      .resources a {
+        color: #79b8ff;
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+
+      .resources a:hover {
+        color: #58a6ff;
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="main-heading">Assignment #1: Creating an Instance in AWS</h1>
+
+      <div class="section">
+        <div class="student-info">
+          <h2 class="section-heading">Student Information</h2>
+          <p><strong>Name:</strong> Divyanshu T. Nikhade</p>
+          <p><strong>Division:</strong> ET1</p>
+          <p><strong>Roll No:</strong> ET1-03</p>
+          <p><strong>PRN:</strong> 202401070026</p>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2 class="section-heading">AWS EC2 Deployment Process</h2>
+
+        <div class="step">
+          <h3 class="sub-heading">Step 1: Searching for the EC2 Service</h3>
+          <ol>
+            <li>
+              Navigate to the AWS Management Console and search for "EC2" in the
+              search bar at the top.
+            </li>
+          </ol>
+          <div class="img-container">
+            <img src="img/search_ec2.png" alt="EC2 Service Search" />
+            <p class="img-caption">Searching for EC2 Service</p>
+          </div>
+        </div>
+
+        <div class="step">
+          <h3 class="sub-heading">Step 2: Launch an Instance</h3>
+          <ol>
+            <li>
+              Click on the "Launch Instance" button to begin the EC2 instance
+              setup process.
+            </li>
+          </ol>
+          <div class="img-container">
+            <img src="img/ec2.png" alt="Launch Instance" />
+            <p class="img-caption">Launch Instance Button</p>
+          </div>
+
+          <h4 class="sub-sub-heading">Name and Tags</h4>
+          <ol>
+            <li>
+              Enter a descriptive name for your instance (e.g., "Linux
+              Instance")
+            </li>
+          </ol>
+          <div class="img-container">
+            <img src="img/name_inatance.png" alt="Name and Tags" />
+            <p class="img-caption">Configuring Instance Name and Tags</p>
+          </div>
+
+          <h4 class="sub-sub-heading">Selecting Amazon Machine Image (AMI)</h4>
+          <ol>
+            <li>Search for "Amazon Linux" in the AMI marketplace</li>
+            <li>Select the official Amazon Linux AMI</li>
+          </ol>
+
+          <h4 class="sub-sub-heading">Instance Type</h4>
+          <ol>
+            <li>Select t2.micro instance type (free tier eligible)</li>
+          </ol>
+
+          <h4 class="sub-sub-heading">Network Settings</h4>
+          <ol>
+            <li>Use default VPC and subnet</li>
+            <li>Enable "Auto-assign Public IP"</li>
+            <li>Create a new security group allowing SSH traffic (port 22)</li>
+          </ol>
+
+          <h4 class="sub-sub-heading">Configure Storage</h4>
+          <ol>
+            <li>Accept the default storage (8 GB) or modify as needed</li>
+          </ol>
+
+          <h4 class="sub-sub-heading">Launch Instance</h4>
+          <ol>
+            <li>
+              Review your instance configuration and click "Launch Instance" to
+              create it
+            </li>
+          </ol>
+          <div class="img-container">
+            <img src="img/launch_instance.png" alt="Review and Launch" />
+            <p class="img-caption">Reviewing and Launching Instance</p>
+          </div>
+        </div>
+
+        <div class="step">
+          <h3 class="sub-heading">Step 3: Instance Launched Successfully</h3>
+          <ol>
+            <li>Verify that your instance is running in the EC2 dashboard</li>
+          </ol>
+        </div>
+
+        <div class="step">
+          <h3 class="sub-heading">Step 4: Connect to the Instance</h3>
+          <ol>
+            <li>
+              Select your instance and click "Connect" to access the connection
+              options
+            </li>
+          </ol>
+          <div class="img-container">
+            <img src="img/connect_instance.png" alt="Connect to Instance" />
+            <p class="img-caption">Connecting to Instance</p>
+          </div>
+        </div>
+
+        <div class="step">
+          <h3 class="sub-heading">
+            Step 5: Connect Using EC2 Instance Connect
+          </h3>
+          <ol>
+            <li>Choose the EC2 Instance Connect option</li>
+            <li>Click "Connect" to open a terminal in your browser</li>
+          </ol>
+          <div class="img-container">
+            <img src="img/instance_connect.png" alt="EC2 Instance Connect" />
+            <p class="img-caption">Using EC2 Instance Connect</p>
+          </div>
+        </div>
+
+        <div class="step">
+          <h3 class="sub-heading">Step 6: Linux Terminal Access</h3>
+          <ol>
+            <li>You will now see the Linux terminal in your browser</li>
+            <li>You are connected to your AWS Linux instance</li>
+          </ol>
+          <div class="img-container">
+            <img src="img/linux_terminal.png" alt="Linux Terminal" />
+            <p class="img-caption">Linux Terminal Access</p>
+          </div>
+        </div>
+
+        <div class="step">
+          <h3 class="sub-heading">Step 7: Executing Linux Commands</h3>
+          <ol>
+            <li>
+              Execute the following basic Linux commands to test your instance:
+            </li>
+          </ol>
+          <div class="code-block">
+            <pre><code># Display "Hello World" message
+echo "Hello World"
+
+# Create an empty file
+touch testfile.txt
+
+# Create a new directory
+mkdir test_directory
+
+# Change directory to the new directory
+cd test_directory
+
+# Display current date and time
+date
+
+# List files in the current directory
+ls -la
+
+# Display network configuration
+ifconfig</code></pre>
+          </div>
+          <div class="img-container">
+            <img src="img/cmd.png" alt="Basic Linux Commands" />
+            <p class="img-caption">Executing Basic Linux Commands</p>
+          </div>
+          <div class="img-container">
+            <img src="img/cmd_date.png" alt="Date Command" />
+            <p class="img-caption">Date Command Execution</p>
+          </div>
+        </div>
+
+        <div class="step">
+          <h3 class="sub-heading">Step 8: Exiting the Terminal</h3>
+          <ol>
+            <li>
+              Type `exit` and press Enter to close the terminal connection
+            </li>
+          </ol>
+          <div class="code-block">
+            <pre><code>exit</code></pre>
+          </div>
+        </div>
+
+        <div class="step">
+          <h3 class="sub-heading">Step 9: Stopping the Instance</h3>
+          <ol>
+            <li>Return to EC2 Dashboard</li>
+            <li>Select your instance</li>
+            <li>Click "Instance state" → "Stop instance"</li>
+            <li>Confirm by clicking "Stop"</li>
+          </ol>
+          <div class="img-container">
+            <img src="img/stop_instance.png" alt="Stop Instance" />
+            <p class="img-caption">Stopping the Instance</p>
+          </div>
+        </div>
+
+        <div class="step">
+          <h3 class="sub-heading">Step 10: Terminating the Instance</h3>
+          <ol>
+            <li>Once stopped, select your instance again</li>
+            <li>Click "Instance state" → "Terminate instance"</li>
+            <li>Confirm termination by clicking "Terminate"</li>
+          </ol>
+          <div class="img-container">
+            <img src="img/terminate_instance.png" alt="Terminate Instance" />
+            <p class="img-caption">Terminating the Instance</p>
+          </div>
+        </div>
+
+        <div class="step">
+          <h3 class="sub-heading">Step 11: Terminated Instance</h3>
+          <ol>
+            <li>
+              The instance state will change to "Shutting down" and then
+              "Terminated"
+            </li>
+            <li>
+              Once terminated, you will no longer be charged for the instance
+            </li>
+          </ol>
+          <div class="img-container">
+            <img src="img/terminate_final.png" alt="Terminated Instance" />
+            <p class="img-caption">Instance Termination Complete</p>
+          </div>
+        </div>
+
+        <div class="note">
+          <h3 class="sub-heading">Important Notes</h3>
+          <ul>
+            <li>
+              Remember to always terminate your instances when not in use to
+              avoid unnecessary charges
+            </li>
+            <li>
+              Save your work before terminating the instance as all data will be
+              lost
+            </li>
+            <li>
+              No key pair is required when using EC2 Instance Connect for this
+              basic setup
+            </li>
+            <li>
+              The commands demonstrated are basic Linux commands to verify your
+              instance functionality
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
